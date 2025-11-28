@@ -40,7 +40,7 @@ describe('Create New Transaction', () => {
 cy.loginB2C_US();
                 
 
-                ;
+                
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(3000)

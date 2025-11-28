@@ -35,14 +35,9 @@ describe('Create New Transaction', () => {
                 const randomZipCode = faker.address.zipCode('#####');
 
 
-                cy.visit(Cypress.env('baseurl1'));
-
-                cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-                    cy.get('#email').type(Cypress.env('credentials').login_username);
-                    cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                    cy.get('#next').click();
-                    cy.wait(10000);
-                });
+               
+cy.loginB2C_US();
+                
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(3000)
@@ -114,17 +109,9 @@ cy.get('#drpState_popup').find('li').contains(randomProvince).click();
 
         ExistingtransactionScenarios.forEach((scenario) => {
             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
-    cy.visit(Cypress.env('baseurl1'));
     
-    cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-        cy.get('#email').type(Cypress.env('credentials').login_username);
-        
-    
-        cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-        cy.get('#next').click();
-        cy.wait(10000);
-    });
-
+cy.loginB2C_US();
+                
             cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
             cy.wait(2000)
             cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
@@ -173,15 +160,9 @@ SameDayACHScenarios.forEach((scenario) => {
                     const randomZipCode = faker.address.zipCode('#####');
     
     
-                    cy.visit(Cypress.env('baseurl1'));
-    
-                    cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-                        cy.get('#email').type(Cypress.env('credentials').login_username);
-                        cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                        cy.get('#next').click();
-                        cy.wait(10000);
-                    });
-    
+                    
+cy.loginB2C_US();
+                
                     cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                     cy.wait(3000)
                     cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
@@ -266,14 +247,9 @@ SameDayACHScenarios.forEach((scenario) => {
     
                 it('Add a batch file', () => {
                     
-                    cy.visit(Cypress.env('baseurl1'));
-            
-                    cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-                        cy.get('#email').type(Cypress.env('credentials').login_username);
-                        cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                        cy.get('#next').click();
-                        cy.wait(10000);
-                    });
+                    
+cy.loginB2C_US();
+                
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click()
                         cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true})
                         cy.wait(2000)
@@ -297,13 +273,9 @@ SameDayACHScenarios.forEach((scenario) => {
                 // Define the tests as functions
                const walletDepositTest = () => {
                     it('Wallet Deposit', () => {
-                        cy.visit(Cypress.env('baseurl1'));
-                        cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-                            cy.get('#email').type(Cypress.env('credentials').login_username);
-                            cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                            cy.get('#next').click();
-                            cy.wait(10000);
-                        });
+                        
+cy.loginB2C_US();
+                
                         cy.get('#menu-item-wallets').click({ force: true });
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
                         cy.get('#transfer_funds').click({ force: true });
@@ -325,13 +297,9 @@ SameDayACHScenarios.forEach((scenario) => {
 
                 const walletWithdrawTest = () => {
                     it('Wallet Withdraw', () => {
-                        cy.visit(Cypress.env('baseurl1'));
-                        cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-                            cy.get('#email').type(Cypress.env('credentials').login_username);
-                            cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                            cy.get('#next').click();
-                            cy.wait(10000);
-                        });
+                        
+cy.loginB2C_US();
+                
                         cy.get('#menu-item-wallets').click({ force: true });
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
                         cy.get('#transfer_funds').click({ force: true });
@@ -353,13 +321,9 @@ SameDayACHScenarios.forEach((scenario) => {
             
                const walletToWalletTransferTest = () => {
                     it('Wallet to Wallet Transfer', () => {
-                        cy.visit(Cypress.env('baseurl1'));
-                        cy.origin('https://kapitalincauthdevus.b2clogin.com', () => {
-                            cy.get('#email').type(Cypress.env('credentials').login_username);
-                            cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                            cy.get('#next').click();
-                            cy.wait(10000);
-                        });
+                        
+cy.loginB2C_US();
+                
                         cy.get('#menu-item-wallets').click({ force: true });
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
                         cy.get('#transfer_funds').click({ force: true });
