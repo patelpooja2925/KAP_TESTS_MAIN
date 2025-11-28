@@ -1,0 +1,25 @@
+{
+  "name": "cypresspractice",
+  "version": "1.0.0",
+  "description": "this is for automating kapcharge website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Pooja",
+    "Patel"
+  ],
+  "author": "Pooja Patel",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/cypress": "^10.0.2",
+    "cypress": "^14.5.4",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-iframe": "^1.0.1",
+    "faker": "^5.5.3"
+  },
+  "dependencies": {
+    "skyflow-js": "^1.36.0"
+  }
+}
