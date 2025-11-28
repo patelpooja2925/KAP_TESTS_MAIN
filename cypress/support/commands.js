@@ -102,11 +102,11 @@ Cypress.Commands.add('loginB2C_CA', () => {
 
         cy.visit(`${baseOrigin}/authentication/login`);
 
-        cy.origin('https://kapitalincauthdevus.b2clogin.com', () => { // US B2C domain
+        cy.origin('https://kapitalincauthStaging.b2clogin.com', () => { // US B2C domain
             cy.get('#email', { timeout: 30000 }).should('be.visible')
-              .type(Cypress.env('credentialsUS').login_username);
+              .type(Cypress.env('credentialsCAStaging').login_username);
             cy.get('input[id="password"]').should('be.visible')
-              .type(Cypress.env('credentialsUS').login_password, { log: false });
+              .type(Cypress.env('credentialsCAStaging').login_password, { log: false });
             cy.get('#next').click();
         });
 
