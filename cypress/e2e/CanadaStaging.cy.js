@@ -44,6 +44,7 @@ describe('Create New Transaction', () => {
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
                 cy.loginB2C_CA();
+                cy.wait(10000)
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(3000)
