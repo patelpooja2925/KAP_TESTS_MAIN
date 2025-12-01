@@ -91,7 +91,7 @@ Cypress.Commands.add('loginB2C_US', () => {
     });
 });
 
-Cypress.Commands.add('loginB2C_CA', () => {
+Cypress.Commands.add('loginB2C_CAS', () => {
     const base = Cypress.env('baseurl3'); // use a separate env variable for US
     const baseOrigin = base.replace(/\/$/, '');
 

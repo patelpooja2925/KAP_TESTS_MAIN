@@ -43,7 +43,7 @@ describe('Create New Transaction', () => {
                 const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
-                cy.loginB2C_CA();
+                cy.loginB2C_CAS();
                 cy.wait(10000)
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
@@ -118,7 +118,7 @@ describe('Create New Transaction', () => {
                 const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
-                cy.loginB2C_CA();
+                cy.loginB2C_CAS();
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(3000)
@@ -195,7 +195,7 @@ describe('Create New Transaction', () => {
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAS();
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(5000)
@@ -309,7 +309,7 @@ describe('Create New Transaction', () => {
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAS();
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(5000)
@@ -430,7 +430,7 @@ describe('Create New Transaction', () => {
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAS();
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(2000)
@@ -660,7 +660,7 @@ describe('Create New Transaction', () => {
                     
                         ExistingtransactionScenarios.forEach((scenario) => {
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
-                    cy.loginB2C_CA();
+                    cy.loginB2C_CAS();
             
                             cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                             cy.wait(2000)
@@ -712,7 +712,7 @@ cy.wait(4000);
                 })
             })
             it('Edit Schedules Transactions ', () => {
-                cy.loginB2C_CA();
+                cy.loginB2C_CAS();
         
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.get('#menu-item-schedules').click({ force: true });
@@ -732,7 +732,7 @@ cy.wait(4000);
         
          
                 it('Cancel Schedules Transactions ', () => {
-                    cy.loginB2C_CA();
+                    cy.loginB2C_CAS();
             
                     cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                     cy.get('#menu-item-schedules').click({ force: true });
@@ -759,14 +759,9 @@ cy.wait(4000);
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
             
-                        cy.visit(Cypress.env('baseurl'));
+                       
             
-                        cy.origin('https://kapitalincauthdev.b2clogin.com', () => {
-                            cy.get('#email').type(Cypress.env('credentials').login_username);
-                            cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                            cy.get('#next').click();
-                            cy.wait(10000);
-                        });
+                        cy.loginB2C_CAS();
             
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(3000)
