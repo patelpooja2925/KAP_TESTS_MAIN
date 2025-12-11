@@ -49,7 +49,7 @@ describe('Create New Transaction', () => {
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                 cy.wait(10000)
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.contains('li', 'Transaction Management').click({ force: true });
+                cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                 cy.wait(10000);
                 cy.get('#Grid_add2').click({force:true});s
@@ -124,7 +124,9 @@ describe('Create New Transaction', () => {
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(3000)
-                cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+
                 cy.wait(3000);
                 cy.get('#Grid_add2').click({force:true});
                 cy.wait(2000);
@@ -201,7 +203,9 @@ describe('Create New Transaction', () => {
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(5000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+
                         cy.wait(5000);
                         cy.get('#Grid_add2').click({force:true});
                         cy.wait(2000);
@@ -315,7 +319,9 @@ describe('Create New Transaction', () => {
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(5000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+
                         cy.wait(5000);
                         cy.get('#Grid_add2').click({ force: true });
                         cy.wait(2000);
@@ -436,7 +442,9 @@ describe('Create New Transaction', () => {
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(2000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                        cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+
                         cy.wait(1000);
                         cy.get('#Grid_add2').click({ force: true });
                         cy.wait(2000);
@@ -551,7 +559,9 @@ describe('Create New Transaction', () => {
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(2000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                       cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+
                         cy.wait(1000);
                         cy.get('#Grid_add2').click({ force: true });
                         cy.wait(2000);
