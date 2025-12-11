@@ -44,12 +44,15 @@ describe('Create New Transaction', () => {
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
                 cy.loginB2C_CA();
-
+cy.wait(20000)
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(3000)
-                cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(3000);
-                cy.get('#Grid_add2').click({force:true});
+                cy.wait(5000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(5000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
                 cy.wait(3000);
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
