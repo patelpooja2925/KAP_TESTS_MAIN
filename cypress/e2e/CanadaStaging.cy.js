@@ -46,7 +46,7 @@ describe('Create New Transaction', () => {
                 cy.loginB2C_CAS();
                 cy.wait(15000)
 
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                 cy.wait(5000)
                 cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(5000);
