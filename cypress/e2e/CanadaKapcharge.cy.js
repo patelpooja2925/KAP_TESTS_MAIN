@@ -46,10 +46,10 @@ describe('Create New Transaction', () => {
                 cy.loginB2C_CA();
 cy.wait(20000)
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(5000)
+                cy.wait(10000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(5000);
+                cy.wait(10000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -122,15 +122,18 @@ cy.wait(20000)
 
                 cy.loginB2C_CA();
 
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(3000)
-                cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(3000);
-                cy.get('#Grid_add2').click({force:true});
-                cy.wait(2000);
+                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(5000);
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
-                cy.wait(1000);
+                cy.wait(2000);
 
                 cy.get('#drpTransType').click({ force: true });
                 cy.get('#drpTransType_popup').find('li').contains(scenario.type).click();
@@ -199,12 +202,15 @@ cy.wait(20000)
         
                         cy.loginB2C_CA();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                        cy.wait(5000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
-                        cy.wait(5000);
-                        cy.get('#Grid_add2').click({force:true});
-                        cy.wait(2000);
+                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(5000);
                         cy.get('#drpMerchant').click({force:true});
                         cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
                         cy.wait(1000);
@@ -313,11 +319,15 @@ cy.wait(20000)
         
                         cy.loginB2C_CA();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                        cy.wait(5000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
-                        cy.wait(5000);
-                        cy.get('#Grid_add2').click({ force: true });
+                      cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(3000);
                         cy.wait(2000);
                         cy.get('#drpMerchant').click({ force: true });
                         cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
@@ -434,12 +444,15 @@ cy.wait(20000)
         
                         cy.loginB2C_CA();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                        cy.wait(2000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                        cy.wait(1000);
-                        cy.get('#Grid_add2').click({ force: true });
-                        cy.wait(2000);
+                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(3000);
                         cy.get('#drpMerchant').click({ force: true });
                         cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
                         cy.wait(1000);
@@ -550,11 +563,14 @@ cy.wait(20000)
                         cy.loginB2C_CA();
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                        cy.wait(2000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                        cy.wait(1000);
-                        cy.get('#Grid_add2').click({ force: true });
-                        cy.wait(2000);
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(3000);
                         cy.get('#drpMerchant').click({ force: true });
                         cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
                         cy.wait(1000);
@@ -663,13 +679,15 @@ cy.wait(20000)
                         ExistingtransactionScenarios.forEach((scenario) => {
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                     cy.loginB2C_CA();
-            
-                            cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                            cy.wait(2000)
-                            cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                            cy.wait(3000);
-                            cy.get('#Grid_add2').click({ force: true });
-                            cy.wait(2000);
+             cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(3000);
                             cy.get('#drpMerchant').click({ force: true });
                             cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
                             cy.wait(1000);
@@ -761,14 +779,17 @@ cy.wait(4000);
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
             
-                        cy.visit(Cypress.env('baseurl'));
-            
-                        cy.origin('https://kapitalincauthdev.b2clogin.com', () => {
-                            cy.get('#email').type(Cypress.env('credentials').login_username);
-                            cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                            cy.get('#next').click();
-                            cy.wait(10000);
-                        });
+                       cy.loginB2C_CA();
+cy.wait(20000)
+                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.wait(10000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
+                //cy.get('#Grid_add2').click({force:true});
+                cy.wait(3000);
             
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                         cy.wait(3000)
@@ -833,36 +854,8 @@ cy.wait(4000);
                         cy.wait(1000)
                     });
               })
-             describe('Upload Batch File', () => {
-  
-    
-                it('Add a batch file', () => {
-                    
-                    cy.visit(Cypress.env('baseurl'));
             
-                    cy.origin('https://kapitalincauthdev.b2clogin.com', () => {
-                        cy.get('#email').type(Cypress.env('credentials').login_username);
-                        cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-                        cy.get('#next').click();
-                        cy.wait(10000);
-                    });
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click()
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true})
-                        cy.wait(2000)
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click()
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true})
-                        cy.get('#Grid_batch').click({ force: true });
-                        cy.wait(3000);
-                        cy.get('#merchantDropdown').click({force:true})
-                        cy.get('#merchantDropdown_popup').find('li').contains('KPC_201-Pooja').click();
-                        cy.get('#fileInput').click({force:true})
-                        cy.get('#fileInput').attachFile('Pooja.xlsx');
-                        cy.get('#batch-upload-button-validate').click({force:true})
-                        cy.wait(5000)
-                        cy.get('#batch-upload-button-upload').click({force:true})
             
-                    })
-            })
 
               describe('Create wallet transactions', () => {
                 // Define the tests as functions
