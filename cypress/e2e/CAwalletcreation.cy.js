@@ -7,14 +7,8 @@ describe('walletcreation', () => {
   
     it(' walletcreation', () => { // testcase 1
       //const randomFirstName = faker.name.firstName();
-  cy.visit(Cypress.env('baseurl'));
-  cy.origin('https://kapitalincauthdev.b2clogin.com', () => {
-      cy.get('#email').type(Cypress.env('credentials').login_username);
-      cy.get('input[id="password"]').type(Cypress.env('credentials').login_password);
-      cy.get('#next').click();
-      cy.wait(5000); 
-  
-  })
+                  cy.loginB2C_CA();
+cy.wait(20000)
   cy.get('#menu-item-wallets').click({force :true})
       cy.get('#menu-item-wallet-setting').click({force:true})
       cy.get('button[aria-label="New Wallet"]').click({force:true});
