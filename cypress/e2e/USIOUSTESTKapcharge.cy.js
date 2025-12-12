@@ -47,10 +47,10 @@ cy.loginB2C_US();
                // cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+            
                cy.wait(3000);
-                cy.get('#Grid_add2').click({force:true});
-                cy.wait(2000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').contains('KPC_201-Kirk').click();
                 //cy.wait(5000);
@@ -125,6 +125,8 @@ cy.get('#drpState_popup').find('li').contains(randomProvince).click();
             cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(10000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
             cy.get('#drpMerchant').click({ force: true });
             cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Kirk').click();
             cy.wait(1000);
@@ -175,7 +177,8 @@ SameDayACHScenarios.forEach((scenario) => {
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(10000);
-                    cy.wait(2000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
                     cy.get('#drpMerchant').click({force:true});
                     cy.get('#drpMerchant_popup').contains('KPC_201-Kevin').click();
                     //cy.wait(5000);
