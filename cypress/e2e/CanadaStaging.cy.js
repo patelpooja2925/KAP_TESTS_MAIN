@@ -107,9 +107,12 @@ describe('Create New Transaction', () => {
                cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({force:true});
                 cy.wait(1000)
-            cy.contains('button', 'OK').click({force:true});
-                cy.wait(1000)
-            });
+            cy.focused().blur({ force: true });
+
+cy.contains('button', 'OK', { timeout: 10000 })
+  .should('be.visible')
+  .click({ force: true });
+
         
         })
         businessTransactionScenarios.forEach((scenario) => {
@@ -186,7 +189,12 @@ describe('Create New Transaction', () => {
               cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
                 //cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click();
                 cy.wait(5000)
-                 cy.contains('button', 'OK').click({force:true});
+                 cy.focused().blur({ force: true });
+
+cy.contains('button', 'OK', { timeout: 10000 })
+  .should('be.visible')
+  .click({ force: true });
+
 
                 cy.wait(5000)
             });
@@ -303,8 +311,12 @@ describe('Create New Transaction', () => {
                         cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({ force: true });
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
-                         cy.contains('button', 'OK').click({force:true});
-                        cy.wait(1000)
+                        cy.focused().blur({ force: true });
+
+cy.contains('button', 'OK', { timeout: 10000 })
+  .should('be.visible')
+  .click({ force: true });
+
                     })
                 
         
