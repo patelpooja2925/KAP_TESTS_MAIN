@@ -50,7 +50,7 @@ cy.loginB2C_US();
             
                cy.wait(3000);
                 cy.contains('button', 'New Transaction').click({ force: true });
-
+cy.wait(5000)
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').contains('KPC_201-Kirk').click();
                 //cy.wait(5000);

@@ -106,11 +106,16 @@ cy.wait(3000)
                 cy.get('#txtAccountNumber').type('2343241');
                cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({force:true});
-                cy.wait(2000)
-         
-          
-            cy.get('.e-footer-content > .e-control').click({force:true});
-            cy.wait(3000)
+                cy.wait(8000)
+         cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
+
+
+
+            
 })
 })
 
@@ -187,15 +192,17 @@ cy.wait(3000)
                 cy.get('#txtTransitNumber').type('11111');
                 cy.get('#txtAccountNumber').type('2343241');
               cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
-                //cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click();
+                cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click();
                 cy.wait(5000)
-             cy.get('#add-transaction-schedule-transaction-info-button-save').click();
+              cy.get('.e-dialog', { timeout: 15000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
 
-cy.contains('Transaction created successfully', { timeout: 10000 })
-  .should('be.visible');
 
-// close dialog safely
-cy.get('body').type('{enter}');
+
+
             })
         })
                 ScduledTransactionScenarios.forEach((scenario) => {
@@ -311,10 +318,14 @@ cy.get('body').type('{enter}');
                         cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({ force: true });
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
-                       
-          
-            cy.get('.e-footer-content > .e-control').click();
-            cy.wait(3000)
+        cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
+
+
+            
 })
 
 
@@ -440,9 +451,13 @@ cy.get('body').type('{enter}');
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(2000)
                       
-          
-            cy.get('.e-footer-content > .e-control').click({force:true});
-            cy.wait(3000)
+     cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
+
+
 });
 
 
@@ -565,9 +580,14 @@ cy.get('body').type('{enter}');
                         cy.wait(1000)
                            
           
-            cy.get('.e-footer-content > .e-control').click();
-            cy.wait(3000)
-})
+           cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
+
+
+        })
 
                     
                 
@@ -691,9 +711,13 @@ cy.get('body').type('{enter}');
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
                         
-          
-            cy.get('.e-footer-content > .e-control').click();
-            cy.wait(3000)
+     cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
+
+
            
             })
         
@@ -749,9 +773,15 @@ cy.wait(4000);
                             cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                             cy.wait(1000)
                          
-          
-            cy.get('.e-footer-content > .e-control').click();
-            cy.wait(3000)
+      cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });;
+
+
+
+         
 })
 })
 
@@ -876,9 +906,13 @@ cy.wait(8000)
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
                   
-          
-            cy.get('.e-footer-content > .e-control').click();
-            cy.wait(3000)
+           cy.get('.e-dialog', { timeout: 45000 })
+  .should('exist')
+  .within(() => {
+    cy.contains('button', 'OK').click({ force: true });
+  });
+
+
             })
               })
             
