@@ -34,8 +34,9 @@ Cypress.Commands.add(
 // ----------------------
 // CA Login Command
 // ----------------------
-Cypress.Commands.add('loginB2C_CA', () => {
-    const base = Cypress.env('baseurl');
+
+    Cypress.Commands.add('loginB2C_CA', () => {
+    const base = Cypress.env('baseurl'); // use a separate env variable for US
     const baseOrigin = base.replace(/\/$/, '');
 
     cy.visit(base);
@@ -45,11 +46,11 @@ Cypress.Commands.add('loginB2C_CA', () => {
 
         cy.visit(`${baseOrigin}/authentication/login`);
 
-        cy.origin('https://kapitalincauthdev.b2clogin.com', () => {
+        cy.origin('https://kapitalincauthdev.b2clogin.com', () => { // US B2C domain
             cy.get('#email', { timeout: 30000 }).should('be.visible')
-              .type(Cypress.env('credentials').login_username);
+              .type(Cypress.env('credentialsUS').login_username);
             cy.get('input[id="password"]').should('be.visible')
-              .type(Cypress.env('credentials').login_password, { log: false });
+              .type(Cypress.env('credentialsUS').login_password, { log: false });
             cy.get('#next').click();
         });
 

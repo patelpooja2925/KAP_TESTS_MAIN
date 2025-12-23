@@ -2,22 +2,20 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   projectId: 'xrqnzg',
-  "record": true,
+  record: true,
+
   e2e: {
-    //base_url2:'https://dev.kapcharge.com/',
-    base_url:'https://test.kapcharge.com/',
+    baseUrl: 'https://test.kapcharge.com', // ✅ MUST be baseUrl
     experimentalSessionAndOrigin: true,
     experimentalModifyObstructiveThirdPartyCode: true,
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-      
+    chromeWebSecurity: false, // ✅ REQUIRED for Azure B2C
 
-      
+    setupNodeEvents(on, config) {
+      return config;
     },
   },
-  
-    "browser": "chrome",
-    viewportWidth: 1200,
-    viewportHeight: 800
-  
+
+  browser: "chrome",
+  viewportWidth: 1200,
+  viewportHeight: 800
 });

@@ -44,7 +44,7 @@ describe('Create New Transaction', () => {
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
                 cy.loginB2C_CA();
-cy.wait(3000)
+cy.wait(8000)
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
@@ -113,7 +113,7 @@ cy.wait(3000)
     cy.contains('button', 'OK').click({ force: true });
   });
 
-
+cy.wait(2000)
 
             
 })
@@ -194,13 +194,12 @@ cy.wait(3000)
               cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click();
                 cy.wait(5000)
-              cy.get('.e-dialog', { timeout: 15000 })
-  .should('exist')
+              cy.get('.e-dialog', { timeout: 15000 }).should('exist')
   .within(() => {
     cy.contains('button', 'OK').click({ force: true });
   });
 
-
+cy.wait(2000)
 
 
             })
@@ -216,10 +215,10 @@ cy.wait(3000)
                         cy.loginB2C_CA();
         
                          cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(10000)
+                cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+                cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -318,8 +317,7 @@ cy.wait(3000)
                         cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({ force: true });
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
-        cy.get('.e-dialog', { timeout: 45000 })
-  .should('exist')
+        cy.get('.e-dialog', { timeout: 15000 }).should('exist')
   .within(() => {
     cy.contains('button', 'OK').click({ force: true });
   });
@@ -341,10 +339,10 @@ cy.wait(3000)
                         cy.loginB2C_CA();
         
                       cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(10000)
+                cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+                cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -451,7 +449,7 @@ cy.wait(3000)
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(2000)
                       
-     cy.get('.e-dialog', { timeout: 45000 })
+     cy.get('.e-dialog', { timeout: 15000 })
   .should('exist')
   .within(() => {
     cy.contains('button', 'OK').click({ force: true });
@@ -474,10 +472,10 @@ cy.wait(3000)
                         cy.loginB2C_CA();
         
                          cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(10000)
+                cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+                cy.wait(500);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -580,7 +578,7 @@ cy.wait(3000)
                         cy.wait(1000)
                            
           
-           cy.get('.e-dialog', { timeout: 45000 })
+           cy.get('.e-dialog', { timeout: 15000 })
   .should('exist')
   .within(() => {
     cy.contains('button', 'OK').click({ force: true });
@@ -601,10 +599,10 @@ cy.wait(3000)
                         cy.loginB2C_CA();
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(10000)
+                cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+                cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -711,13 +709,11 @@ cy.wait(3000)
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
                         
-     cy.get('.e-dialog', { timeout: 45000 })
-  .should('exist')
-  .within(() => {
+     cy.get('.e-dialog', { timeout: 15000 }).should('exist') .within(() => {
     cy.contains('button', 'OK').click({ force: true });
   });
 
-
+                    })
            
             })
         
@@ -726,10 +722,10 @@ cy.wait(3000)
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                     cy.loginB2C_CA();
              cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(10000)
+                cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+                cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -773,8 +769,7 @@ cy.wait(4000);
                             cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                             cy.wait(1000)
                          
-      cy.get('.e-dialog', { timeout: 45000 })
-  .should('exist')
+      cy.get('.e-dialog', { timeout: 45000 }).should('exist')
   .within(() => {
     cy.contains('button', 'OK').click({ force: true });
   });;
@@ -837,10 +832,10 @@ cy.wait(4000);
                        cy.loginB2C_CA();
 cy.wait(8000)
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(10000)
+                cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(10000);
+                cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -906,9 +901,7 @@ cy.wait(8000)
                         cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({ force: true });
                         cy.wait(1000)
                   
-           cy.get('.e-dialog', { timeout: 45000 })
-  .should('exist')
-  .within(() => {
+           cy.get('.e-dialog', { timeout: 45000 }) .should('exist') .within(() => {
     cy.contains('button', 'OK').click({ force: true });
   });
 
@@ -1011,4 +1004,4 @@ cy.wait(8000)
                     CancelTest();
 }})
 //
-})}})
+    }})
