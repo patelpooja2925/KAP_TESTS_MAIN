@@ -38,7 +38,7 @@ describe('Create New Transaction', () => {
                 const randomZipCode = faker.address.zipCode('#####');
 
 cy.loginB2C_US();
-    cy.wait(10000)            
+    cy.wait(5000)            
 
                 
 
@@ -118,7 +118,7 @@ cy.get('#drpState_popup').find('li').contains(randomProvince).click();
    
     cy.loginB2C_US();
     
-    cy.wait(10000)
+    cy.wait(5000)
 
             cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
             cy.wait(2000)
@@ -171,7 +171,7 @@ SameDayACHScenarios.forEach((scenario) => {
     
                  cy.loginB2C_US();
                     
-    cy.wait(10000)
+    cy.wait(5000)
                     cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                     cy.wait(3000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
