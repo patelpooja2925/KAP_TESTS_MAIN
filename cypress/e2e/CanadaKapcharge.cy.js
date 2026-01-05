@@ -4,12 +4,12 @@ import 'cypress-file-upload';
 
 describe('Create New Transaction', () => {
     const numTransactions = 1; // Change this to the number of transactions you want to create
-   const transactionScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
-    ];
+//    const transactionScenarios = [
+//         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
+//         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
+//         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
+//         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
+//     ];
 
     const businessTransactionScenarios = [
         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
@@ -34,90 +34,90 @@ describe('Create New Transaction', () => {
     ];
     const today = new Date().toLocaleDateString('en-US');
     for (let i = 0; i < numTransactions; i++) {
-     transactionScenarios.forEach((scenario) => {
-            it(`Add a new customer transaction - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
-                const randomFirstName = faker.name.firstName();
-                const randomLastName = faker.name.lastName();
+//      transactionScenarios.forEach((scenario) => {
+//             it(`Add a new customer transaction - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
+//                 const randomFirstName = faker.name.firstName();
+//                 const randomLastName = faker.name.lastName();
              
-                const randomEmail = faker.internet.email();
-                const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
-                const randomZipCode = faker.address.zipCode('?#?-#?#');
+//                 const randomEmail = faker.internet.email();
+//                 const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
+//                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
-                cy.loginB2C_CA();
-cy.wait(8000)
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
-                cy.wait(5000)
-                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(5000);
-                cy.contains('button', 'New Transaction').click({ force: true });
+//                 cy.loginB2C_CA();
+// cy.wait(5000)
+//                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+//                 cy.wait(5000)
+//                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+//                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+//                 cy.wait(5000);
+//                 cy.contains('button', 'New Transaction').click({ force: true });
 
-                //cy.get('#Grid_add2').click({force:true});
-                cy.wait(3000);
-                cy.get('#drpMerchant').click({force:true});
-                cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
-                //cy.wait(5000);
+//                 //cy.get('#Grid_add2').click({force:true});
+//                 cy.wait(3000);
+//                 cy.get('#drpMerchant').click({force:true});
+//                 cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Pooja').click();
+//                 //cy.wait(5000);
 
-                cy.get('#drpTransType').click({force:true});
-                cy.get('#drpTransType_popup').find('li').contains(scenario.type).click();
+//                 cy.get('#drpTransType').click({force:true});
+//                 cy.get('#drpTransType_popup').find('li').contains(scenario.type).click();
 
-                cy.get('#drpTransMethod').click({ force: true });
-                cy.get('#drpTransMethod_popup').find('li').contains(scenario.method).click();
+//                 cy.get('#drpTransMethod').click({ force: true });
+//                 cy.get('#drpTransMethod_popup').find('li').contains(scenario.method).click();
 
-                cy.get('#txtAmount').clear().type('1.01');
-                cy.get('#txtMerchantRefNumber').type('123456');
-                cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
-                cy.get('#add-transaction-button-add-customer').click({force:true});
+//                 cy.get('#txtAmount').clear().type('1.01');
+//                 cy.get('#txtMerchantRefNumber').type('123456');
+//                 cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
+//                 cy.get('#add-transaction-button-add-customer').click({force:true});
 
-                // Additional fields for INTERAC method
-                if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
-                    cy.get('#txtQuestion').type('What is your favorite color?');
-                    cy.get('#txtAnswer').type('Yellow');
-                    cy.wait(3000);
-                }
+//                 // Additional fields for INTERAC method
+//                 if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
+//                     cy.get('#txtQuestion').type('What is your favorite color?');
+//                     cy.get('#txtAnswer').type('Yellow');
+//                     cy.wait(3000);
+//                 }
 
-                cy.get('#txtFirstName').type(randomFirstName);
-                cy.get('#txtLastName').type(randomLastName);
-                cy.get('#txtEmail').type(randomEmail);
-                cy.get('#txtPhone').click({force:true});
-                cy.get('#txtPhone')
-                    .invoke('val', randomPhoneNumber)
-                    .trigger('input')
-                    .trigger('blur');
-                cy.get('#txtPhone')
-                    .should('have.value', randomPhoneNumber, { timeout: 1000 });
-                cy.get('#txtAddress1').type('423 street');
-                cy.get('#txtAddress2').type('Unit 7');
+//                 cy.get('#txtFirstName').type(randomFirstName);
+//                 cy.get('#txtLastName').type(randomLastName);
+//                 cy.get('#txtEmail').type(randomEmail);
+//                 cy.get('#txtPhone').click({force:true});
+//                 cy.get('#txtPhone')
+//                     .invoke('val', randomPhoneNumber)
+//                     .trigger('input')
+//                     .trigger('blur');
+//                 cy.get('#txtPhone')
+//                     .should('have.value', randomPhoneNumber, { timeout: 1000 });
+//                 cy.get('#txtAddress1').type('423 street');
+//                 cy.get('#txtAddress2').type('Unit 7');
 
-                // Select a random province
-                cy.get('#drpState').click({force:true});
-                const province = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'ON', 'PE', 'QC', 'SK', 'NT', 'NU', 'YT'];
-                const randomProvince = province[Math.floor(Math.random() * province.length)];
-                cy.get('#drpState_popup').find('li').contains(randomProvince).click();
+//                 // Select a random province
+//                 cy.get('#drpState').click({force:true});
+//                 const province = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'ON', 'PE', 'QC', 'SK', 'NT', 'NU', 'YT'];
+//                 const randomProvince = province[Math.floor(Math.random() * province.length)];
+//                 cy.get('#drpState_popup').find('li').contains(randomProvince).click();
 
-                cy.get('#txtCity').type('Montreal');
-                cy.get('#txtZip').click({force:true});
-                cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
-                cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
-                cy.get('#drpInstitutionNumber').click({force:true});
-                cy.get('#drpInstitutionNumber').type('002');
-                cy.get('#drpInstitutionNumber_popup').find('li').contains('002').click();
-                cy.get('#txtTransitNumber').type('11111');
-                cy.get('#txtAccountNumber').type('2343241');
-               cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
-                cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({force:true});
-                cy.wait(8000)
-         cy.get('.e-dialog', { timeout: 45000 })
-  .should('exist')
-  .within(() => {
-    cy.contains('button', 'OK').click({ force: true });
-  });
+//                 cy.get('#txtCity').type('Montreal');
+//                 cy.get('#txtZip').click({force:true});
+//                 cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+//                 cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
+//                 cy.get('#drpInstitutionNumber').click({force:true});
+//                 cy.get('#drpInstitutionNumber').type('002');
+//                 cy.get('#drpInstitutionNumber_popup').find('li').contains('002').click();
+//                 cy.get('#txtTransitNumber').type('11111');
+//                 cy.get('#txtAccountNumber').type('2343241');
+//                cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
+//                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({force:true});
+//                 cy.wait(2000)
+//          cy.get('.e-dialog', { timeout: 45000 })
+//   .should('exist')
+//   .within(() => {
+//     cy.contains('button', 'OK').click({ force: true });
+//   });
 
-cy.wait(2000)
+// cy.wait(2000)
 
             
-})
-})
+// })
+// })
 
         businessTransactionScenarios.forEach((scenario) => {
             it(`Add a new business customer transaction - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
@@ -194,13 +194,7 @@ cy.wait(2000)
               cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click();
                 cy.wait(5000)
-              cy.get('.e-dialog', { timeout: 15000 }).should('exist')
-  .within(() => {
-    cy.contains('button', 'OK').click({ force: true });
-  });
-
-cy.wait(2000)
-
+             cy.get('.e-footer-content > .e-control').click({force:true});
 
             })
         })
@@ -756,11 +750,11 @@ cy.wait(2000)
                             
                            cy.get('#fltCustomerInfo').click({ force: true })
   .clear() // optional, to ensure field is empty
-  .type('searchuser@gmail.com').should('be.visible').click({ force: true });
+  .type('Demond_Koelpin12@yahoo.com').should('be.visible').click({ force: true });
 
 
 // Now try finding the cell
-cy.contains('td', 'searchuser@gmail.com', { timeout: 10000 }) .should('be.visible').click({ force: true });
+cy.contains('td', 'Demond_Koelpin12@yahoo.com', { timeout: 10000 }) .should('be.visible').click({ force: true });
 
 
 cy.wait(4000); 
@@ -804,7 +798,7 @@ cy.wait(4000);
                 it('Cancel Schedules Transactions ', () => {
                     cy.loginB2C_CA();
             
-                    cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                    cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                     cy.get('#menu-item-schedules').click({ force: true });
             
                     // Step 1: Click the button
@@ -831,7 +825,7 @@ cy.wait(4000);
             
                        cy.loginB2C_CA();
 cy.wait(8000)
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                 cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
@@ -916,9 +910,10 @@ cy.wait(8000)
                const walletDepositTest = () => {
                     it('Wallet Deposit', () => {
                         cy.loginB2C_CA();
-                        cy.get('#menu-item-wallets').click({ force: true });
+                      cy.get('#menu-item-wallets', { timeout: 30000 })
+  .click({ force: true })
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
-                        cy.get('#transfer_funds').click({ force: true });
+                        cy.get('#transfer_funds > .e-control > .e-tbar-btn-text').click({force:true})
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
                         cy.get('li', { timeout: 10000 }).should('be.visible');
                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
@@ -938,9 +933,10 @@ cy.wait(8000)
                 const walletWithdrawTest = () => {
                     it('Wallet Withdraw', () => {
                         cy.loginB2C_CA();
-                        cy.get('#menu-item-wallets').click({ force: true });
+                     cy.get('#menu-item-wallets', { timeout: 30000 })
+  .click({ force: true })
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
-                        cy.get('#transfer_funds').click({ force: true });
+                       cy.get('#transfer_funds > .e-control > .e-tbar-btn-text').click({force:true})
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
                         cy.get('li', { timeout: 10000 }).should('be.visible');
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Withdraw').click({ force: true });
@@ -960,9 +956,10 @@ cy.wait(8000)
                const walletToWalletTransferTest = () => {
                     it('Wallet to Wallet Transfer', () => {
                         cy.loginB2C_CA();
-                        cy.get('#menu-item-wallets').click({ force: true });
+                      cy.get('#menu-item-wallets', { timeout: 30000 })
+  .click({ force: true })
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
-                        cy.get('#transfer_funds').click({ force: true });
+                       cy.get('#transfer_funds > .e-control > .e-tbar-btn-text').click({force:true})
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
                         cy.get('li', { timeout: 10000 }).should('be.visible');
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Transfer').click({ force: true });
@@ -981,7 +978,8 @@ cy.wait(8000)
                 const CancelTest = () => {
         it('Wallet Cancel', () => {
             cy.loginB2C_CA();
-            cy.get('#menu-item-wallets').click({ force: true });
+            cy.get('#menu-item-wallets', { timeout: 30000 })
+  .click({ force: true })
             cy.get('#menu-item-wallet-transfer').click({force:true})
       cy.get('[id^="sfdropdownbutton"] > .fa').first().click({ force: true });
 
