@@ -8,7 +8,7 @@ describe('walletcreation', () => {
     it(' walletcreation', () => { // testcase 1
       //const randomFirstName = faker.name.firstName();
                   cy.loginB2C_CA();
-cy.wait(20000)
+cy.wait(5000)
   cy.get('#menu-item-wallets').click({force :true})
       cy.get('#menu-item-wallet-setting').click({force:true})
       cy.get('button[aria-label="New Wallet"]').click({force:true});

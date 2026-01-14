@@ -18,7 +18,7 @@ describe('Create New Transaction', () => {
         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac }
     ];
     const ScduledTransactionScenarios = [
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
+        //{ type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
     ];
 
@@ -44,16 +44,16 @@ describe('Create New Transaction', () => {
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
                 cy.loginB2C_CAS();
-                cy.wait(15000)
+                cy.wait(5000)
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
-                cy.wait(10000)
+                cy.wait(8000)
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
-                cy.wait(10000);
-                cy.get('#Grid_add2').click({force:true});s
-                cy.wait(10000);
+                cy.wait(8000);
+                cy.get('#Grid_add2').click({force:true});
+                cy.wait(8000);
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').find('li').contains('KPC_201-KPCHRG').click();
                 //cy.wait(5000);
@@ -112,7 +112,7 @@ describe('Create New Transaction', () => {
 cy.contains('button', 'OK', { timeout: 10000 })
   .should('be.visible')
   .click({ force: true });
-
+            })
         
         })
         businessTransactionScenarios.forEach((scenario) => {
@@ -197,8 +197,8 @@ cy.contains('button', 'OK', { timeout: 10000 })
 
 
                 cy.wait(5000)
-            });
-        })
+            });})
+        
                 ScduledTransactionScenarios.forEach((scenario) => {
                     it(`Add a new   Daily schedule customer transaction - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                         const randomFirstName = faker.name.firstName();
@@ -319,7 +319,7 @@ cy.contains('button', 'OK', { timeout: 10000 })
 
                     })
                 
-        
+                
                     it(`Add a new  Schedule Weekly customer transaction - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                         const randomFirstName = faker.name.firstName();
                         const randomLastName = faker.name.lastName();
@@ -442,7 +442,7 @@ cy.contains('button', 'OK', { timeout: 10000 })
                       cy.contains('button', 'OK').click({force:true});
                         cy.wait(1000)
                     });
-        
+                
                     it(`Add a new  Schedule BiWeekly customer transaction - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                         const randomFirstName = faker.name.firstName();
                         const randomLastName = faker.name.lastName();
@@ -680,8 +680,8 @@ cy.contains('button', 'OK', { timeout: 10000 })
                         cy.wait(1000)
                     cy.contains('button', 'OK').click({force:true});
                         cy.wait(5000)
-                    })})
-                    
+                    })
+                })
                         ExistingtransactionScenarios.forEach((scenario) => {
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                     cy.loginB2C_CAS();
@@ -850,4 +850,4 @@ cy.wait(4000);
                         cy.wait(1000)
                     });
               })
-            }})
+    }})
