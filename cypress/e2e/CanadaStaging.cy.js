@@ -131,8 +131,8 @@ cy.contains('button', 'OK', { timeout: 10000 })
                 cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                 cy.wait(3000);
-                cy.get('#Grid_add2').click({force:true});
-                cy.wait(2000);
+             cy.contains('button', 'New Transaction').click({ force: true });
+
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').find('li').contains('KPC_201-KPCHRG').click();
                 cy.wait(1000);
@@ -214,8 +214,8 @@ cy.contains('button', 'OK', { timeout: 10000 })
                         //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
                         cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
-                        cy.wait(5000);
-                        cy.get('#Grid_add2').click({force:true});
+                         cy.contains('button', 'New Transaction').click({ force: true });
+
                         cy.wait(2000);
                         cy.get('#drpMerchant').click({force:true});
                         cy.get('#drpMerchant_popup').find('li').contains('KPC_201-KPCHRG').click();
@@ -335,8 +335,8 @@ cy.contains('button', 'OK', { timeout: 10000 })
                         cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                         cy.wait(5000);
-                        cy.get('#Grid_add2').click({ force: true });
-                        cy.wait(2000);
+                        cy.contains('button', 'New Transaction').click({ force: true });
+;
                         cy.get('#drpMerchant').click({ force: true });
                         cy.get('#drpMerchant_popup').find('li').contains('KPC_201-KPCHRG').click();
                         cy.wait(1000);
