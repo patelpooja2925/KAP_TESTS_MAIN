@@ -51,9 +51,9 @@ describe('Create New Transaction', () => {
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
-                cy.wait(8000);
-                cy.get('#Grid_add2').click({force:true});
-                cy.wait(8000);
+                cy.wait(5000);
+               cy.contains('button', 'New Transaction').click({ force: true });
+
                 cy.get('#drpMerchant').click({force:true});
                 cy.get('#drpMerchant_popup').find('li').contains('KPC_201-KPCHRG').click();
                 //cy.wait(5000);
