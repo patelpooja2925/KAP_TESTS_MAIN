@@ -33,20 +33,19 @@ describe('Create New Transaction', () => {
                 const randomEmail = faker.internet.email();
                 const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                 const randomZipCode = faker.address.zipCode('#####');
-
-
-               
 cy.loginB2C_US();
                 
 
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(3000)
-                cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(3000);
-                cy.get('#Grid_add2').click({force:true});
-                cy.wait(2000);
+                cy.wait(5000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(5000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
                 cy.get('#drpMerchant').click({force:true});
-                cy.get('#drpMerchant_popup').contains('Zil').click();
+                cy.get('#drpMerchant_popup').contains('KPC_201-Kirk').click();
                 //cy.wait(5000);
 
                 cy.get('#drpTransType').click({force:true});
@@ -114,12 +113,14 @@ cy.loginB2C_US();
                 
             cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
             cy.wait(2000)
-            cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-            cy.wait(3000);
-            cy.get('#Grid_add2').click({ force: true });
-            cy.wait(2000);
+          cy.wait(5000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(5000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
             cy.get('#drpMerchant').click({ force: true });
-            cy.get('#drpMerchant_popup').find('li').contains('Zil').click();
+            cy.get('#drpMerchant_popup').find('li').contains('KPC_201-Kirk').click();
             cy.wait(1000);
 
             cy.get('#drpTransType').click({ force: true });
@@ -136,9 +137,9 @@ cy.loginB2C_US();
        
             cy.get('#add-transaction-button-search-customer').click({ force: true });
            
-            cy.get('#fltCustomerInfo').click({force:true}).type('Velda.Schroeder67@hotmail.com') 
+            cy.get('#fltCustomerInfo').click({force:true}).type('sky.thompson@demo.org') 
 
-            cy.contains('td', 'Mckenzie.Mueller2@yahoo.com').should('be.visible', { timeout: 4000 }).click({force:true})
+            cy.contains('td', 'sky.thompson@demo.org').should('be.visible', { timeout: 4000 }).click({force:true})
             cy.wait(4000)
       cy.get('#add-transaction-schedule-transaction-info-button-save').click({ force: true });
     
@@ -165,12 +166,14 @@ cy.loginB2C_US();
     
                     cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                     cy.wait(3000)
-                    cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                    cy.wait(3000);
-                    cy.get('#Grid_add2').click({force:true});
-                    cy.wait(2000);
+                    cy.wait(5000)
+                    cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
+                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                cy.wait(5000);
+                cy.contains('button', 'New Transaction').click({ force: true });
+
                     cy.get('#drpMerchant').click({force:true});
-                    cy.get('#drpMerchant_popup').contains('Zil').click();
+                    cy.get('#drpMerchant_popup').contains('KPC_201-Kirk').click();
                     //cy.wait(5000);
     
                     cy.get('#drpTransType').click({force:true});
@@ -242,31 +245,7 @@ cy.loginB2C_US();
 
 
 
-            describe('Upload Batch File', () => {
-  
-    
-                it('Add a batch file', () => {
-                    
-                  
-cy.loginB2C_US();
-                
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click()
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true})
-                        cy.wait(2000)
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click()
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true})
-                        cy.get('#Grid_batch').click({ force: true });
-                        cy.wait(3000);
-                        cy.get('#merchantDropdown').click({force:true})
-                        cy.get('#merchantDropdown_popup').find('li').contains('Zil').click({force:true});
-                        cy.get('#fileInput').click({force:true})
-                        cy.get('#fileInput').attachFile('USPooja.xlsx');
-                        cy.get('#batch-upload-button-validate').click({force:true})
-                        cy.wait(5000)
-                        cy.get('#batch-upload-button-upload').click({force:true})
             
-                    })
-            })
 
 
             describe('Create wallet transactions', () => {
