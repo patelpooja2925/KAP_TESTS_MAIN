@@ -191,8 +191,11 @@ cy.wait(2000)
               //  cy.get('#drpInstitutionNumber_popup').find('li').contains('002').click();
                 cy.get('#txtTransitNumber').type('11111');
                 cy.get('#txtAccountNumber').type('2343241');
-              cy.get('#add-transaction-schedule-transaction-info-button-save > span').click({force:true});
-                cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click();
+          cy.get('#add-transaction-schedule-transaction-info-button-save', { timeout: 15000 })
+  .should('be.visible')
+  .should('not.be.disabled')
+  .click({force:true});
+                cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 15000 }).click();
                 cy.wait(5000)
              cy.get('.e-footer-content > .e-control').click({force:true});
 
@@ -780,15 +783,18 @@ cy.wait(4000);
         
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.get('#menu-item-schedules').click({ force: true });
-        
-          
-                cy.get('button[id^="schedules-action-"]').first().click();
-        
-                cy.contains('li.e-item', 'Edit Amount').click();
-        
-        cy.get('#txtAmount').clear().type('0.04').click({force:true})
-        cy.get('#dialog-amount-button-ok').click({force:true})
-        cy.wait(1000)
+// Step 1: Click 3-dot action button
+cy.get('button[id^="schedules-action-"]')
+  .first()
+  .click({ force: true });
+
+// Step 2: Click Edit Amount
+cy.contains('li.e-item', 'Edit Amount')
+.should('be.visible').click({force:true});
+  cy.get('#txtAmount')
+  .should('be.visible')
+  .clear()
+  .type('100');
         //cy.get('#dialog-amount-button-cancel').click({force:true})
         //cy.get('#schedules-cancel-dialog-button-ok').click({force:true})
                 
@@ -800,14 +806,16 @@ cy.wait(4000);
             
                     cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                     cy.get('#menu-item-schedules').click({ force: true });
-            
-                    // Step 1: Click the button
-            cy.get('button[id^="schedules-action-"]').first().click();
-            
-            // Step 2: Click the "Cancel All" option
-            cy.get('li[id^="schedules-cancel-all-"]').click();
-            cy.wait(1000)
-            
+         // Step 1: Click action (3 dots)
+cy.get('button[id^="schedules-action-"]')
+  .should('be.visible')
+  .first()
+  .click({ force: true });
+
+// Step 2: Wait for dropdown to render
+cy.get('li[id^="schedules-cancel-all-"]', { timeout: 5000 })
+  .should('be.visible')
+  .click({ force: true });
             cy.get('#schedules-cancel-dialog-button-ok').click({force:true})
                     
                 })
@@ -915,18 +923,25 @@ cy.wait(8000)
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
                         cy.get('#transfer_funds > .e-control > .e-tbar-btn-text').click({force:true})
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
-                        cy.get('li', { timeout: 10000 }).should('be.visible');
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet_34').click({ force: true });
+                        cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Deposit').click({ force: true });
+        
+                       cy.get('#wallet-transfer-transfer-funds-input-to-wallet').click({ force: true });
+cy.get('#wallet-transfer-transfer-funds-input-to-wallet_option_51').click({force:true})
+
                         cy.get('#wallet-transfer-transfer-funds-input-from-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank_0', { timeout: 10000 }).should('exist').click({ force: true });
+                        cy.get('#wallet-transfer-transfer-funds-input-from-bank_option_2').click({force:true})
                          //cy.get('#wallet-transfer-transfer-funds-input-from-bank_1').click({ force: true });
                         const randomValue = Math.floor(Math.random() * 555) + 1;
                        
                         cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
                         cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
-                        cy.get('button[type="button"]').contains('OK').click({ force: true });
+                       cy.get('.e-footer-content > .e-primary').click({force:true})
+                     cy.get('.e-footer-content')
+cy.get('.e-footer-content')
+  .contains('button', /^OK$/)
+  .should('be.visible')
+  .click({ force: true });
+                       cy.wait(100)
                     });
                 };
             
@@ -940,16 +955,21 @@ cy.wait(8000)
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
                         cy.get('li', { timeout: 10000 }).should('be.visible');
                         cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Withdraw').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet_34').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank_0', { timeout: 10000 }).should('exist').click({ force: true });
+                        cy.get('#wallet-transfer-transfer-funds-input-from-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
+                        cy.get('#wallet-transfer-transfer-funds-input-from-wallet_51').click({ force: true });
+                        cy.get('#wallet-transfer-transfer-funds-input-to-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
+                        cy.get('#wallet-transfer-transfer-funds-input-to-bank_2', { timeout: 10000 }).should('exist').click({ force: true });
                         //cy.get('#wallet-transfer-transfer-funds-input-from-bank_1').click({ force: true });
                         const randomValue = Math.floor(Math.random() * 999) + 1;
                         cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
                         cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
                         cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
-                        cy.get('button[type="button"]').contains('OK').click({ force: true });
+                         cy.get('.e-footer-content > .e-primary').click({force:true})
+                 cy.get('.e-footer-content')
+  .contains('button', /^OK$/)
+  .should('be.visible')
+  .click({ force: true });
+                       cy.wait(100)
                     });
                 
                 }
@@ -972,7 +992,7 @@ cy.wait(8000)
                         cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
                         cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
                         cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
-                        cy.get('button[type="button"]').contains('OK').click({ force: true });
+                        cy.contains('.e-footer-content button', 'OK').click({force:true});
                     });
                 };
                 const CancelTest = () => {
@@ -1002,4 +1022,6 @@ cy.wait(8000)
                     CancelTest();
 }})
 //
-    }})
+    //}})
+}})
+

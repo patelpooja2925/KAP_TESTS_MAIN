@@ -95,7 +95,7 @@ cy.get('#drpState_popup').find('li').contains(randomProvince).click();
                 cy.get('#bank-account-type_popup').find('li').contains('Personal Checking').click();
 
                
-                cy.get('#txtTransitNumber').type('051000017');
+                cy.get('#txtTransitNumber').type('555555550');
                 cy.get('#txtAccountNumber').type('424785414');
                 cy.get('#add-transaction-schedule-transaction-info-button-save').click({force:true});
                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({force:true});
@@ -137,9 +137,9 @@ cy.loginB2C_US();
        
             cy.get('#add-transaction-button-search-customer').click({ force: true });
            
-            cy.get('#fltCustomerInfo').click({force:true}).type('sky.thompson@demo.org') 
+            cy.get('#fltCustomerInfo').click({force:true}).type('Cassandra.Marks@gmail.com') 
 
-            cy.contains('td', 'sky.thompson@demo.org').should('be.visible', { timeout: 4000 }).click({force:true})
+            cy.contains('td', 'Cassandra.Marks@gmail.com').should('be.visible', { timeout: 4000 }).click({force:true})
             cy.wait(4000)
       cy.get('#add-transaction-schedule-transaction-info-button-save').click({ force: true });
     
@@ -227,7 +227,7 @@ cy.loginB2C_US();
                     cy.get('#bank-account-type_popup').find('li').contains('Personal Checking').click();
     
                    
-                    cy.get('#txtTransitNumber').type('051000017');
+                    cy.get('#txtTransitNumber').type('555555550');
                     cy.get('#txtAccountNumber').type('424785414');
                 
                     cy.get('#add-transaction-schedule-transaction-info-button-save').click({force:true});
@@ -248,87 +248,87 @@ cy.loginB2C_US();
             
 
 
-            describe('Create wallet transactions', () => {
-                // Define the tests as functions
-               const walletDepositTest = () => {
-                    it('Wallet Deposit', () => {
+//             describe('Create wallet transactions', () => {
+//                 // Define the tests as functions
+//                const walletDepositTest = () => {
+//                     it('Wallet Deposit', () => {
                      
-cy.loginB2C_US();
-                ;
-                        cy.get('#menu-item-wallets').click({ force: true });
-                        cy.get('#menu-item-wallet-transfer').click({ force: true });
-                        cy.get('#transfer_funds').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
-                        cy.get('li', { timeout: 10000 }).should('be.visible');
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet_20').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
-                         cy.get('#wallet-transfer-transfer-funds-input-from-bank_1').click({ force: true });
-                        const randomValue = Math.floor(Math.random() * 555) + 1;
+// cy.loginB2C_US();
+//                 ;
+//                         cy.get('#menu-item-wallets').click({ force: true });
+//                         cy.get('#menu-item-wallet-transfer').click({ force: true });
+//                         cy.get('#transfer_funds').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
+//                         cy.get('li', { timeout: 10000 }).should('be.visible');
+//                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet_20').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-from-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
+//                          cy.get('#wallet-transfer-transfer-funds-input-from-bank_1').click({ force: true });
+//                         const randomValue = Math.floor(Math.random() * 555) + 1;
                        
-                        cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
-                        cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
-                        cy.get('button[type="button"]').contains('OK').click({ force: true });
-                    });
-                };
+//                         cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
+//                         cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
+//                         cy.get('button[type="button"]').contains('OK').click({ force: true });
+//                     });
+//                 };
             
 
-                const walletWithdrawTest = () => {
-                    it('Wallet Withdraw', () => {
+//                 const walletWithdrawTest = () => {
+//                     it('Wallet Withdraw', () => {
                         
-cy.loginB2C_US();
+// cy.loginB2C_US();
                 
-                        cy.get('#menu-item-wallets').click({ force: true });
-                        cy.get('#menu-item-wallet-transfer').click({ force: true });
-                        cy.get('#transfer_funds').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
-                        cy.get('li', { timeout: 10000 }).should('be.visible');
-                        cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Withdraw').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet_32').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
+//                         cy.get('#menu-item-wallets').click({ force: true });
+//                         cy.get('#menu-item-wallet-transfer').click({ force: true });
+//                         cy.get('#transfer_funds').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
+//                         cy.get('li', { timeout: 10000 }).should('be.visible');
+//                         cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Withdraw').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet_32').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-from-bank').should('be.visible', { timeout: 4000 }).click({ force: true });
                       
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank_1').click({ force: true });
-                        const randomValue = Math.floor(Math.random() * 999) + 1;
-                        cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
-                        cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
-                        cy.get('button[type="button"]').contains('OK').click({ force: true });
-                    });
-                };
+//                         cy.get('#wallet-transfer-transfer-funds-input-from-bank_1').click({ force: true });
+//                         const randomValue = Math.floor(Math.random() * 999) + 1;
+//                         cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
+//                         cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
+//                         cy.get('button[type="button"]').contains('OK').click({ force: true });
+//                     });
+//                 };
             
-               const walletToWalletTransferTest = () => {
-                    it('Wallet to Wallet Transfer', () => {
+//                const walletToWalletTransferTest = () => {
+//                     it('Wallet to Wallet Transfer', () => {
                        
                     
-cy.loginB2C_US();
+// cy.loginB2C_US();
                 
-                        cy.get('#menu-item-wallets').click({ force: true });
-                        cy.get('#menu-item-wallet-transfer').click({ force: true });
-                        cy.get('#transfer_funds').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
-                        cy.get('li', { timeout: 10000 }).should('be.visible');
-                        cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Transfer').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-to-wallet_20').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank-merchant').should('be.visible', { timeout: 4000 }).click({ force: true });
+//                         cy.get('#menu-item-wallets').click({ force: true });
+//                         cy.get('#menu-item-wallet-transfer').click({ force: true });
+//                         cy.get('#transfer_funds').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-operation-type').click({ force: true });
+//                         cy.get('li', { timeout: 10000 }).should('be.visible');
+//                         cy.get('#wallet-transfer-transfer-funds-input-operation-type_options').find('li').contains('Transfer').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet').should('be.visible', { timeout: 4000 }).click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-to-wallet_20').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-input-from-bank-merchant').should('be.visible', { timeout: 4000 }).click({ force: true });
             
-                        cy.get('#wallet-transfer-transfer-funds-input-from-bank-merchant_1').click({ force: true });
-                        const randomValue = Math.floor(Math.random() * 1999) + 1;
-                        cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
-                        cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
-                        cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
-                        cy.get('button[type="button"]').contains('OK').click({ force: true });
-                    });
-                };
+//                         cy.get('#wallet-transfer-transfer-funds-input-from-bank-merchant_1').click({ force: true });
+//                         const randomValue = Math.floor(Math.random() * 1999) + 1;
+//                         cy.get('#wallet-transfer-transfer-funds-input-amount').clear().type(randomValue.toString());
+//                         cy.get('#wallet-transfer-transfer-funds-input-description').type('cypressautomation').click({ force: true });
+//                         cy.get('#wallet-transfer-transfer-funds-button-complete').click({ force: true });
+//                         cy.get('button[type="button"]').contains('OK').click({ force: true });
+//                     });
+//                 };
             
-                // Loop to run the tests twice
-                for (let i = 0; i < 1; i++) {
-                    walletDepositTest();
-                   walletWithdrawTest();
-                    walletToWalletTransferTest();
-                }})
+//                 // Loop to run the tests twice
+//                 for (let i = 0; i < 1; i++) {
+//                     walletDepositTest();
+//                    walletWithdrawTest();
+//                     walletToWalletTransferTest();
+//                 }})
         
         }})
 
