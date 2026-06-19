@@ -43,7 +43,7 @@ describe('Create New Transaction', () => {
                 const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
-                cy.loginB2C_CA();
+                cy.loginB2C_CAD();
 cy.wait(5000)
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
@@ -127,7 +127,7 @@ cy.wait(2000)
                 const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                 const randomZipCode = faker.address.zipCode('?#?-#?#');
 
-                cy.loginB2C_CA();
+                cy.loginB2C_CAD();
 
                  cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
@@ -206,7 +206,7 @@ cy.wait(2000)
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
         
                          cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
@@ -330,7 +330,7 @@ cy.wait(2000)
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
         
                       cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
@@ -463,7 +463,7 @@ cy.wait(2000)
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
         
                          cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
@@ -590,7 +590,7 @@ cy.wait(2000)
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
         
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
         
                         cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
@@ -714,7 +714,7 @@ cy.wait(2000)
                     
                         ExistingtransactionScenarios.forEach((scenario) => {
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
-                    cy.loginB2C_CA();
+                    cy.loginB2C_CAD();
              cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
@@ -776,7 +776,7 @@ cy.wait(4000);
 
             
             it('Edit Schedules Transactions ', () => {
-                cy.loginB2C_CA();
+                cy.loginB2C_CAD();
         
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
                 cy.get('#menu-item-schedules').click({ force: true });
@@ -796,7 +796,7 @@ cy.wait(4000);
         
          
                 it('Cancel Schedules Transactions ', () => {
-                    cy.loginB2C_CA();
+                    cy.loginB2C_CAD();
             
                     cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                     cy.get('#menu-item-schedules').click({ force: true });
@@ -823,7 +823,7 @@ cy.wait(4000);
                         const randomPhoneNumber = faker.phone.phoneNumber('###-###-####');
                         const randomZipCode = faker.address.zipCode('?#?-#?#');
             
-                       cy.loginB2C_CA();
+                       cy.loginB2C_CAD();
 cy.wait(8000)
                 cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
                 cy.wait(5000)
@@ -909,7 +909,7 @@ cy.wait(8000)
                 // Define the tests as functions
                const walletDepositTest = () => {
                     it('Wallet Deposit', () => {
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
                       cy.get('#menu-item-wallets', { timeout: 30000 })
   .click({ force: true })
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
@@ -932,7 +932,7 @@ cy.wait(8000)
             
                 const walletWithdrawTest = () => {
                     it('Wallet Withdraw', () => {
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
                      cy.get('#menu-item-wallets', { timeout: 30000 })
   .click({ force: true })
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
@@ -955,7 +955,7 @@ cy.wait(8000)
                 }
                const walletToWalletTransferTest = () => {
                     it('Wallet to Wallet Transfer', () => {
-                        cy.loginB2C_CA();
+                        cy.loginB2C_CAD();
                       cy.get('#menu-item-wallets', { timeout: 30000 })
   .click({ force: true })
                         cy.get('#menu-item-wallet-transfer').click({ force: true });
@@ -977,7 +977,7 @@ cy.wait(8000)
                 };
                 const CancelTest = () => {
         it('Wallet Cancel', () => {
-            cy.loginB2C_CA();
+            cy.loginB2C_CAD();
             cy.get('#menu-item-wallets', { timeout: 30000 })
   .click({ force: true })
             cy.get('#menu-item-wallet-transfer').click({force:true})
