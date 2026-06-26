@@ -14,7 +14,7 @@ describe('Canada Tests', () => {
                             cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                         cy.get('#menu-item-transactions').click({force:true})
                         cy.wait(5000)
-        cy.get('.displayText').contains('Payment Links').click({ force: true });
+        cy.get('.displayText').contains('RevLinx').click({ force: true });
         cy.contains('button', 'Create Payment Link').should('be.visible').click({force:true});
 cy.contains('label', 'Merchant')
   .parents('.e-ddl')
