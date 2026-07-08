@@ -42,7 +42,7 @@ describe('CA Prod Login', () => {
             
             
             
-                            cy.get('#txtAmount').clear().type('0.01');
+                            cy.get('#txtAmount').clear().type('0.00');
                             cy.get('#txtMerchantRefNumber').clear().type('TestProdcypressautomation').click({ force: true });
                             cy.get('#txtDescriptions').clear().type('This is a cypress Prod Automation');
                             

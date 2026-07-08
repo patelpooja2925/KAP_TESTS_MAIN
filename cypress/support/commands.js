@@ -119,29 +119,46 @@ Cypress.Commands.add('loginB2C_CAS', () => {
     });
 });
 
-Cypress.Commands.add('loginB2C_CAD', () => {
-    const base = Cypress.env('baseurl2'); // use a separate env variable for US
-    const baseOrigin = base.replace(/\/$/, '');
+// cypress/support/commands.js
 
-    cy.visit(base);
+Cypress.Commands.add('loginB2C_CAProd', () => {
+  const base = Cypress.env('baseurl2');
+  const baseOrigin = base.replace(/\/$/, '');
 
-    cy.get('body').then($b => {
-        if ($b.find('#menu-item-transactions').length) return;
+  const username = Cypress.env('credentialsUS').login_username;
+  const password = Cypress.env('credentialsUS').login_password;
 
-        cy.visit(`${baseOrigin}/authentication/login`);
+  cy.visit(base);
 
-        cy.origin('https://kapitalincauthdev.b2clogin.com', () => { // US B2C domain
-            cy.get('#email', { timeout: 30000 }).should('be.visible')
-              .type(Cypress.env('credentialsUS').login_username);
-            cy.get('input[id="password"]').should('be.visible')
-              .type(Cypress.env('credentialsUS').login_password, { log: false });
-            cy.get('#next').click();
-        });
+  cy.get('body').then($b => {
+    if ($b.find('#menu-item-transactions').length) return;
 
-        cy.wait(2000);
+    cy.visit(`${baseOrigin}/authentication/login`);
 
-        cy.get('body', { timeout: 60000 }).should($body => {
-            expect($body.find('#menu-item-transactions').length, 'menu item after login').to.be.greaterThan(0);
-        });
-    });
+    cy.origin(
+      'https://login.kapcharge.com',
+      { args: { username, password } },
+      ({ username, password }) => {
+        cy.get('#email', { timeout: 30000 })
+          .should('be.visible')
+          .clear()
+          .type(username);
+
+        cy.get('#password', { timeout: 30000 })
+          .should('be.visible')
+          .clear()
+          .type(password, { log: false });
+
+        cy.get('#next')
+          .should('be.visible')
+          .click();
+
+        
+        cy.pause();
+      }
+    );
+
+    cy.get('#menu-item-transactions', { timeout: 90000 })
+      .should('be.visible');
+  });
 });
