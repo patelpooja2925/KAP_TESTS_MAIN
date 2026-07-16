@@ -55,7 +55,7 @@ cy.wait(5000)
                 //cy.get('#Grid_add2').click({force:true});
                 cy.wait(3000);
                 cy.get('#drpMerchant').click({force:true});
-                cy.get('#drpMerchant_popup').find('li').contains('WalletAptPay').click();
+                cy.get('#drpMerchant_popup').find('li').contains('WalletAPtPay').click();
                 //cy.wait(5000);
 
                 cy.get('#drpTransType').click({force:true});
@@ -139,7 +139,7 @@ cy.wait(2000)
                 //cy.get('#Grid_add2').click({force:true});
                 cy.wait(5000);
                 cy.get('#drpMerchant').click({force:true});
-                cy.get('#drpMerchant_popup').find('li').contains('WalletAptPay').click();
+                cy.get('#drpMerchant_popup').find('li').contains('WalletAPtPay').click();
                 cy.wait(2000);
 
                 cy.get('#drpTransType').click({ force: true });
@@ -221,7 +221,7 @@ cy.wait(2000)
                 //cy.get('#Grid_add2').click({force:true});
                 cy.wait(5000);
                         cy.get('#drpMerchant').click({force:true});
-                        cy.get('#drpMerchant_popup').find('li').contains('WalletAptPay').click();
+                        cy.get('#drpMerchant_popup').find('li').contains('WalletAPtPay').click();
                         cy.wait(1000);
         
                         cy.get('#drpTransType').click({force:true});
