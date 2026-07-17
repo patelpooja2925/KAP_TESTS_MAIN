@@ -227,7 +227,7 @@ cy.loginB2C_US();
                     cy.get('#bank-account-type_popup').find('li').contains('Personal Checking').click();
     
                    
-                    cy.get('#txtTransitNumber').type('555555550');
+                    cy.get('#txtTransitNumber').type('121000248');
                     cy.get('#txtAccountNumber').type('424785414');
                 
                     cy.get('#add-transaction-schedule-transaction-info-button-save').click({force:true});
