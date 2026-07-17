@@ -95,7 +95,7 @@ cy.get('#drpState_popup').find('li').contains(randomProvince).click();
                 cy.get('#bank-account-type_popup').find('li').contains('Personal Checking').click();
 
                
-                cy.get('#txtTransitNumber').type('555555550');
+                cy.get('#txtTransitNumber').type('121000248');
                 cy.get('#txtAccountNumber').type('424785414');
                 cy.get('#add-transaction-schedule-transaction-info-button-save').click({force:true});
                 cy.get('#add-transaction-schedule-transaction-info-dialog-button-ok').should('be.visible', { timeout: 4000 }).click({force:true});
