@@ -68,7 +68,7 @@ methods.forEach((method) => {
 cy.get('input[id*="wallet-setting-new-wallet-input-merchant-trans-type"]')
   .click({ force: true })
 
-cy.contains('li', 'Collect').click({ force: true })   // replace with your option
+cy.contains('li', 'COLLECT').click({ force: true })   // replace with your option
 
   
 cy.get('input[id*="wallet-setting-new-wallet-input-merchant-legal-name"]').type('Kapcharge Merchant', { force: true })
