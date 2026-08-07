@@ -49,7 +49,7 @@ cy.wait(5000)
                 cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
                 //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
-                cy.wait(5000);
+                cy.wait(8000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
                 //cy.get('#Grid_add2').click({force:true});
@@ -64,7 +64,8 @@ cy.wait(5000)
                 cy.get('#drpTransMethod').click({ force: true });
                 cy.get('#drpTransMethod_popup').find('li').contains(scenario.method).click();
 
-                cy.get('#txtAmount').clear().type('1.01');
+
+cy.get('#txtAmount').should('be.visible').clear().type('1.01');
                 cy.get('#txtMerchantRefNumber').type('123456');
                 cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
                 cy.get('#add-transaction-button-add-customer').click({force:true});
@@ -144,11 +145,22 @@ cy.wait(2000)
 
                 cy.get('#drpTransType').click({ force: true });
                 cy.get('#drpTransType_popup').find('li').contains(scenario.type).click();
+cy.get('#drpTransMethod').click({ force: true });
 
-                cy.get('#drpTransMethod').click({force:true});
-                cy.get('#drpTransMethod_popup').find('li').contains(scenario.method).click();
+cy.get('#drpTransMethod_popup')
+  .find('li')
+  .contains(scenario.method)
+  .click();
 
-                cy.get('#txtAmount').clear().type('1.00');
+// Remove .notif-overlay check
+
+cy.get('#txtAmount', { timeout: 20000 })
+  .should('be.visible')
+  .and('not.be.disabled')
+  .clear()
+  .type('1.01');
+
+             
                 cy.get('#txtMerchantRefNumber').clear().type('123456');
                 cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
                 cy.get('#add-transaction-button-add-customer').click();

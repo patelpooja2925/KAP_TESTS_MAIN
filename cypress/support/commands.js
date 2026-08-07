@@ -135,8 +135,7 @@ Cypress.Commands.add('loginB2C_CAProd', () => {
 
     cy.visit(`${baseOrigin}/authentication/login`);
 
-    cy.origin(
-      'https://login.kapcharge.com',
+    cy.origin('https://login.kapcharge.com',
       { args: { username, password } },
       ({ username, password }) => {
         cy.get('#email', { timeout: 30000 })
