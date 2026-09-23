@@ -73,7 +73,7 @@ cy.contains('li', 'COLLECT').click({ force: true })   // replace with your optio
   
 cy.get('input[id*="wallet-setting-new-wallet-input-merchant-legal-name"]').type('Kapcharge Merchant', { force: true })
 cy.get('input[id*="wallet-setting-new-wallet-input-company-website"]').type('www.kapcharge.com')
-cy.get('input[id*="wallet-setting-new-wallet-input-interact-notification-email"]').type('test@example.com');
+//cy.get('input[id*="wallet-setting-new-wallet-input-interact-notification-email"]').type('test@example.com');
 cy.get('input[id*="wallet-setting-new-wallet-input-company-email"]').type('pooja@kapitalinc.com', { force: true })
 cy.get('input[id*="wallet-setting-new-wallet-input-federal-tax-id"]').type('123456', { force: true })
 cy.get('input[id*="wallet-setting-new-wallet-input-country"]')
