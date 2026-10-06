@@ -6,17 +6,16 @@ describe('Create New Transaction', () => {
     const numTransactions = 1; // Change this to the number of transactions you want to create
    const transactionScenarios = [
         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
-    ];
+        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
+         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
+     ];
 
-    const businessTransactionScenarios = [
+     const businessTransactionScenarios = [
         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac }
-    ];
+         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
+         { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac },
+         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac }
+     ];
     const ScduledTransactionScenarios = [
         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
         { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
