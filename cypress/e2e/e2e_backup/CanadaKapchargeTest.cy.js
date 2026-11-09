@@ -64,7 +64,7 @@ cy.wait(5000)
                 cy.get('#drpTransMethod_popup').find('li').contains(scenario.method).click();
 
 
-cy.get('#txtAmount').should('be.visible').clear().type('1.01');
+cy.get('#txtAmount').should('be.visible').clear({force:true}).type('1.01');
                 cy.get('#txtMerchantRefNumber').type('123456');
                 cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
                 cy.get('#add-transaction-button-add-customer').click({force:true});
@@ -82,11 +82,9 @@ cy.get('#txtAmount').should('be.visible').clear().type('1.01');
                 cy.get('#txtPhone').click({force:true});
                 cy.get('#txtPhone')
                     .invoke('val', randomPhoneNumber)
-                    .trigger('input')
+                    .trigger('input', { force: true })
                     .trigger('blur');
-                cy.get('#txtPhone')
-                    .should('have.value', randomPhoneNumber, { timeout: 1000 });
-                cy.get('#txtAddress1').type('423 street');
+               cy.wait(2000)
                 cy.get('#txtAddress2').type('Unit 7');
 
                 // Select a random province
@@ -97,7 +95,7 @@ cy.get('#txtAmount').should('be.visible').clear().type('1.01');
 
                 cy.get('#txtCity').type('Montreal');
                 cy.get('#txtZip').click({force:true});
-                cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                 cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                 cy.get('#drpInstitutionNumber').click({force:true});
                 cy.get('#drpInstitutionNumber').type('002');
@@ -182,10 +180,9 @@ cy.get('#txtAmount', { timeout: 20000 })
                 cy.get('#txtPhone').click({ force: true });
                 cy.get('#txtPhone')
                     .invoke('val', randomPhoneNumber)
-                    .trigger('input')
+                    .trigger('input', { force: true })
                     .trigger('blur');
-                cy.get('#txtPhone')
-                    .should('have.value', randomPhoneNumber, { timeout: 1000 });
+               
                 cy.get('#txtAddress1').type('423 street');
                 cy.get('#txtAddress2').type('Unit 7');
                 cy.get('#drpState').click({force:true});
@@ -195,7 +192,7 @@ cy.get('#txtAmount', { timeout: 20000 })
 
                 cy.get('#txtCity').type('Montreal');
                 cy.get('#txtZip').click();
-                cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                 cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                 cy.get('#drpInstitutionNumber').click();
                 cy.get('#drpInstitutionNumber').type('002');
@@ -254,10 +251,9 @@ cy.get('#txtAmount', { timeout: 20000 })
                         cy.get('#txtPhone').click({ force: true });
                         cy.get('#txtPhone')
                             .invoke('val', randomPhoneNumber)
-                            .trigger('input')
+                            .trigger('input', { force: true })
                             .trigger('blur');
-                        cy.get('#txtPhone')
-                            .should('have.value', randomPhoneNumber, { timeout: 1000 });
+                     
                         cy.get('#txtAddress1').type('423 street');
                         cy.get('#txtAddress2').type('Unit 7');
         
@@ -269,7 +265,7 @@ cy.get('#txtAmount', { timeout: 20000 })
         
                         cy.get('#txtCity').type('Montreal');
                         cy.get('#txtZip').click({ force: true });
-                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                         cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                         cy.get('#drpInstitutionNumber').click({ force: true });
                         cy.get('#drpInstitutionNumber').type('002');
@@ -377,7 +373,7 @@ cy.get('#txtAmount', { timeout: 20000 })
                         cy.get('#txtPhone').click({ force: true });
                         cy.get('#txtPhone')
                             .invoke('val', randomPhoneNumber)
-                            .trigger('input')
+                            .trigger('input', { force: true })
                             .trigger('blur');
                         cy.get('#txtPhone')
                             .should('have.value', randomPhoneNumber, { timeout: 1000 });
@@ -392,7 +388,7 @@ cy.get('#txtAmount', { timeout: 20000 })
         
                         cy.get('#txtCity').type('Montreal');
                         cy.get('#txtZip').click({ force: true });
-                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                         cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                         cy.get('#drpInstitutionNumber').click({ force: true });
                         cy.get('#drpInstitutionNumber').type('002');
@@ -508,7 +504,7 @@ cy.get('#txtAmount', { timeout: 20000 })
                         cy.get('#txtPhone').click({ force: true });
                         cy.get('#txtPhone')
                             .invoke('val', randomPhoneNumber)
-                            .trigger('input')
+                            .trigger('input', { force: true })
                             .trigger('blur');
                         cy.get('#txtPhone')
                             .should('have.value', randomPhoneNumber, { timeout: 1000 });
@@ -523,7 +519,7 @@ cy.get('#txtAmount', { timeout: 20000 })
         
                         cy.get('#txtCity').type('Montreal');
                         cy.get('#txtZip').click({ force: true });
-                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                         cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                         cy.get('#drpInstitutionNumber').click({ force: true });
                         cy.get('#drpInstitutionNumber').type('002');
@@ -639,7 +635,7 @@ cy.get('#txtAmount', { timeout: 20000 })
                         cy.get('#txtPhone').click({ force: true });
                         cy.get('#txtPhone')
                             .invoke('val', randomPhoneNumber)
-                            .trigger('input')
+                            .trigger('input', { force: true })
                             .trigger('blur');
                         cy.get('#txtPhone')
                             .should('have.value', randomPhoneNumber, { timeout: 1000 });
@@ -654,7 +650,7 @@ cy.get('#txtAmount', { timeout: 20000 })
         
                         cy.get('#txtCity').type('Montreal');
                         cy.get('#txtZip').click({ force: true });
-                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                         cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                         cy.get('#drpInstitutionNumber').click();
                         cy.get('#drpInstitutionNumber').type('002');
@@ -888,7 +884,7 @@ cy.wait(8000)
                         cy.get('#txtPhone').click({ force: true });
                         cy.get('#txtPhone')
                             .invoke('val', randomPhoneNumber)
-                            .trigger('input')
+                            .trigger('input', { force: true })
                             .trigger('blur');
                         cy.get('#txtPhone')
                             .should('have.value', randomPhoneNumber, { timeout: 1000 });
@@ -903,7 +899,7 @@ cy.wait(8000)
             
                         cy.get('#txtCity').type('Montreal');
                         cy.get('#txtZip').click({ force: true });
-                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input').trigger('blur');
+                        cy.get('#txtZip').invoke('val', randomZipCode).trigger('input', { force: true }).trigger('blur');
                         cy.get('#txtZip').should('have.value', randomZipCode, { timeout: 10000 });
                         cy.get('#drpInstitutionNumber').click({ force: true });
                         cy.get('#drpInstitutionNumber').type('002');

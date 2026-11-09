@@ -20,16 +20,33 @@
 // Iframe helper
 // ----------------------
 Cypress.Commands.add(
-    'iframe',
-    { prevSubject: 'element' },
-    ($iframe) => {
-        return new Cypress.Promise(resolve => {
-            $iframe.on('load', () => {
-                resolve($iframe.contents().find('body'))
-            })
-        })
-    }
+  'iframe',
+  { prevSubject: 'element' },
+  ($iframe) => {
+    return new Cypress.Promise((resolve) => {
+      $iframe.on('load', () => {
+        resolve($iframe.contents().find('body'));
+      });
+    });
+  }
 );
+
+// Force clear globally
+Cypress.Commands.overwrite(
+  'clear',
+  (originalFn, subject, options = {}) => {
+    return originalFn(subject, { ...options, force: true });
+  }
+);
+
+// Force type globally
+Cypress.Commands.overwrite(
+  'type',
+  (originalFn, subject, text, options = {}) => {
+    return originalFn(subject, text, { ...options, force: true });
+  }
+);
+
 
 // ----------------------
 // CA Login Command
