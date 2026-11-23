@@ -8,9 +8,24 @@ module.exports = defineConfig({
     baseUrl: 'https://test.kapcharge.com', // ✅ MUST be baseUrl
     experimentalSessionAndOrigin: true,
     experimentalModifyObstructiveThirdPartyCode: true,
-    chromeWebSecurity: false, // ✅ REQUIRED for Azure B2C
+    chromeWebSecurity: true, // ✅ REQUIRED for Azure B2C
 
     setupNodeEvents(on, config) {
+      const { transaction_type, transaction_methods } = config.env;
+
+      if (!transaction_type || !transaction_methods) {
+        throw new Error(
+          'Missing transaction_type or transaction_methods. Check cypress.env.json or CI settings.'
+        );
+      }
+
+      config.expose = {
+        ...config.expose,
+        transaction_type,
+        transaction_methods,
+          menu_items: config.env.menu_items,
+      };
+
       return config;
     },
   },

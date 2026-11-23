@@ -51,34 +51,35 @@ Cypress.Commands.overwrite(
 // ----------------------
 // CA Login Command
 // ----------------------
+Cypress.Commands.add('loginB2C_CA', () => {
+  cy.env(['credentials'], { log: false }).then(({ credentials }) => {
+    const { login_username, login_password } = credentials;
 
-    Cypress.Commands.add('loginB2C_CA', () => {
-    const base = Cypress.env('baseurl'); // use a separate env variable for US
-    const baseOrigin = base.replace(/\/$/, '');
+    cy.visit('/authentication/login');
 
-    cy.visit(base);
+    cy.origin('https://kapitalincauthdev.b2clogin.com',
+      { args: { login_username, login_password } },
+      ({ login_username, login_password }) => {
+        cy.get('#email', { timeout: 30000 })
+          .should('be.visible')
+          .type(login_username, { log: false });
 
-    cy.get('body').then($b => {
-        if ($b.find('#menu-item-transactions').length) return;
+        cy.get('#password')
+          .should('be.visible')
+          .type(login_password, {
+            log: false,
+            parseSpecialCharSequences: false,
+          });
 
-        cy.visit(`${baseOrigin}/authentication/login`);
+        cy.get('#next').click();
+      }
+    );
+  });
 
-        cy.origin('https://kapitalincauthdev.b2clogin.com', () => { // US B2C domain
-            cy.get('#email', { timeout: 30000 }).should('be.visible')
-              .type(Cypress.env('credentialsUS').login_username);
-            cy.get('input[id="password"]').should('be.visible')
-              .type(Cypress.env('credentialsUS').login_password, { log: false });
-            cy.get('#next').click();
-        });
-
-        cy.wait(2000);
-
-        cy.get('body', { timeout: 60000 }).should($body => {
-            expect($body.find('#menu-item-transactions').length, 'menu item after login').to.be.greaterThan(0);
-        });
-    });
+  cy.get('#menu-item-transactions', { timeout: 60000 })
+    .should('be.visible');
 });
-
+   
 // ----------------------
 // US Login Command
 // ----------------------
