@@ -108,8 +108,8 @@ Cypress.Commands.add('loginB2C_US', () => {
 
 
 Cypress.Commands.add('loginB2C_CAS', () => {
-  cy.env(['credentials'], { log: false }).then(({ credentials }) => {
-    const { login_username, login_password } = credentials;
+  cy.env(['credentialsCAStaging'], { log: false }).then(({credentialsCAStaging}) => {
+    const { login_username, login_password } = credentialsCAStaging;
     cy.log(`Active baseurl3 = ${Cypress.config('baseurl3')}`);
 
    cy.visit('https://app-staging.kapcharge.com/authentication/login');

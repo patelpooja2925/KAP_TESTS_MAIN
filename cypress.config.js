@@ -7,6 +7,8 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://test.kapcharge.com', // ✅ MUST be baseUrl
     baseUrl1:'https://test-us.kapcharge.com',
+    baseurl3: 'https://app-staging.kapcharge.com',
+  
     experimentalSessionAndOrigin: true,
     experimentalModifyObstructiveThirdPartyCode: true,
     chromeWebSecurity: true, // ✅ REQUIRED for Azure B2C

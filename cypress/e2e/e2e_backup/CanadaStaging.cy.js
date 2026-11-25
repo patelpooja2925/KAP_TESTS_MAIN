@@ -5,32 +5,32 @@ import 'cypress-file-upload';
 describe('Create New Transaction', () => {
     const numTransactions = 1; // Change this to the number of transactions you want to create
    const transactionScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-       // { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
-        //{ type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').eft },
+        { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').eft },
+       // { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').interac },
+        //{ type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').interac }
     ];
 
     const businessTransactionScenarios = [
-       // { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-       // { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac }
+       // { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').eft },
+       // { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').eft },
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').interac },
+        { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').interac }
     ];
     const ScduledTransactionScenarios = [
-        //{ type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
+        //{ type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').eft },
+        { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').interac },
     ];
 
     const ExistingtransactionScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-       //{ type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        //{ type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').eft },
+       //{ type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').eft },
+        //{ type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').interac },
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').interac }
     ];
     const DelayTransactionScenarios = [
-        //{ type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
+        //{ type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').eft },
+        { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').interac },
     ];
     const today = new Date().toLocaleDateString('en-US');
     for (let i = 0; i < numTransactions; i++) {
@@ -46,9 +46,9 @@ describe('Create New Transaction', () => {
                 cy.loginB2C_CAS();
                 cy.wait(5000)
 
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click({force:true});
+                cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click({force:true});
                 cy.wait(8000)
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                 cy.wait(5000);
@@ -70,7 +70,7 @@ describe('Create New Transaction', () => {
                 cy.get('#add-transaction-button-add-customer').click({force:true});
 
                 // Additional fields for INTERAC method
-                if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
+                if (scenario.type === Cypress.expose('transaction_type').type_pay && scenario.method === Cypress.expose('transaction_methods').interac) {
                     cy.get('#txtQuestion').type('What is your favorite color?');
                     cy.get('#txtAnswer').type('Yellow');
                     cy.wait(3000);
@@ -125,9 +125,9 @@ cy.contains('button', 'OK', { timeout: 10000 })
 
                 cy.loginB2C_CAS();
 
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                 cy.wait(3000)
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                 cy.wait(3000);
@@ -147,7 +147,7 @@ cy.contains('button', 'OK', { timeout: 10000 })
                 cy.get('#txtMerchantRefNumber').clear().type('123456');
                 cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
                 cy.get('#add-transaction-button-add-customer').click();
-                if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
+                if (scenario.type === Cypress.expose('transaction_type').type_pay && scenario.method === Cypress.expose('transaction_methods').interac) {
                     cy.get('#txtQuestion').type('What is your favorite color?');
                     cy.get('#txtAnswer').type('Yellow');
                     cy.wait(2000);
@@ -209,9 +209,9 @@ cy.contains('button', 'OK', { timeout: 10000 })
         
                         cy.loginB2C_CAS();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                        cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                         cy.wait(5000)
-                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({ force: true });
                         cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                          cy.contains('button', 'New Transaction').click({ force: true });
@@ -329,9 +329,9 @@ cy.contains('button', 'OK', { timeout: 10000 })
         
                         cy.loginB2C_CAS();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                        cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                         cy.wait(5000)
-                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({ force: true });
                         cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                         cy.wait(5000);
@@ -452,9 +452,9 @@ cy.contains('button', 'OK', { timeout: 10000 })
         
                         cy.loginB2C_CAS();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                        cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                         cy.wait(2000)
-                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                         cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                         cy.wait(1000);
@@ -569,9 +569,9 @@ cy.contains('button', 'OK', { timeout: 10000 })
         
                         cy.loginB2C_CA();
         
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                        cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                         cy.wait(2000)
-                        //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                        //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                        cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
 
                         cy.wait(1000);
@@ -686,9 +686,9 @@ cy.contains('button', 'OK', { timeout: 10000 })
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                     cy.loginB2C_CAS();
             
-                            cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                            cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                             cy.wait(2000)
-                            cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                            cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                             cy.wait(3000);
                             cy.get('#Grid_add2').click({ force: true });
                             cy.wait(2000);
@@ -708,7 +708,7 @@ cy.contains('button', 'OK', { timeout: 10000 })
                             cy.get('#txtMerchantRefNumber').clear().type('123456').click({ force: true });
                             cy.get('#txtDescriptions').clear().type('This is a cypress test automation');
                             
-                            if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
+                            if (scenario.type === Cypress.expose('transaction_type').type_pay && scenario.method === Cypress.expose('transaction_methods').interac) {
                                 cy.get('#txtQuestion').type('What is your favorite color?');
                                 cy.get('#txtAnswer').type('Yellow');
                                 cy.wait(2000);
@@ -738,7 +738,7 @@ cy.wait(4000);
             it('Edit Schedules Transactions ', () => {
                 cy.loginB2C_CAS();
         
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                 cy.get('#menu-item-schedules').click({ force: true });
         
           
@@ -758,7 +758,7 @@ cy.wait(4000);
                 it('Cancel Schedules Transactions ', () => {
                     cy.loginB2C_CAS();
             
-                    cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                    cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                     cy.get('#menu-item-schedules').click({ force: true });
             
                     // Step 1: Click the button
@@ -787,9 +787,9 @@ cy.wait(4000);
             
                         cy.loginB2C_CAS();
             
-                        cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                        cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                         cy.wait(3000)
-                        cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({ force: true });
+                        cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({ force: true });
                         cy.wait(3000);
                         cy.get('#Grid_add2').click({ force: true });
                         cy.wait(3000);
@@ -809,7 +809,7 @@ cy.wait(4000);
                         cy.get('#add-transaction-button-add-customer').click({ force: true });
             
                         // Additional fields for INTERAC method
-                        if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
+                        if (scenario.type === Cypress.expose('transaction_type').type_pay && scenario.method === Cypress.expose('transaction_methods').interac) {
                             cy.get('#txtQuestion').type('What is your favorite color?');
                             cy.get('#txtAnswer').type('Yellow');
                             cy.wait(3000);
