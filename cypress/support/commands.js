@@ -60,15 +60,9 @@ Cypress.Commands.add('loginB2C_CA', () => {
     cy.origin('https://kapitalincauthdev.b2clogin.com',
       { args: { login_username, login_password } },
       ({ login_username, login_password }) => {
-        cy.get('#email', { timeout: 30000 })
-          .should('be.visible')
-          .type(login_username, { log: false });
+        cy.get('#email', { timeout: 30000 }).should('be.visible').type(login_username, { log: false });
 
-        cy.get('#password')
-          .should('be.visible')
-          .type(login_password, {
-            log: false,
-            parseSpecialCharSequences: false,
+        cy.get('#password').should('be.visible').type(login_password, {log: false, parseSpecialCharSequences: false,
           });
 
         cy.get('#next').click();
