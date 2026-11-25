@@ -5,21 +5,21 @@ import 'cypress-file-upload';
 describe('Create New Transaction', () => {
     const numTransactions = 1; // Change this to the number of transactions you want to create
     const transactionScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').ach },
-        { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').ach },
-       // { type: Cypress.env('transaction_type').type_prenote, method: Cypress.env('transaction_methods').ach },
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').ach },
+        { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').ach },
+       // { type: Cypress.expose('transaction_type').type_prenote, method: Cypress.expose('transaction_methods').ach },
     
     ];
     const ExistingtransactionScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').ach },
-       { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').ach },
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').ach },
+       { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').ach },
         
     ];
 
     const SameDayACHScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').ach },
-       { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').ach },
-      // { type: Cypress.env('transaction_type').type_prenote, method: Cypress.env('transaction_methods').ach }, 
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').ach },
+       { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').ach },
+      // { type: Cypress.expose('transaction_type').type_prenote, method: Cypress.expose('transaction_methods').ach }, 
         
     ];
   
@@ -36,11 +36,11 @@ describe('Create New Transaction', () => {
 cy.loginB2C_US();
                 
 
-                cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                 cy.wait(3000)
                 cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
@@ -50,7 +50,7 @@ cy.loginB2C_US();
 
                 cy.get('#drpTransType').click({force:true});
                 cy.get('#drpTransType_popup').find('li').contains(scenario.type).click();
-                if (scenario.type === Cypress.env('transaction_type').type_prenote) {
+                if (scenario.type === Cypress.expose('transaction_type').type_prenote) {
                     // For 'prenote', skip the amount field and focus on merchant reference
                     cy.get('#txtMerchantRefNumber').type('123456');
                 } else {
@@ -111,11 +111,11 @@ cy.get('#drpState_popup').find('li').contains(randomProvince).click();
 
 cy.loginB2C_US();
                 
-            cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+            cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
             cy.wait(2000)
           cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
@@ -164,11 +164,11 @@ SameDayACHScenarios.forEach((scenario) => {
 cy.loginB2C_US();
                 
     
-                    cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+                    cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                     cy.wait(3000)
                     cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
@@ -178,7 +178,7 @@ cy.loginB2C_US();
     
                     cy.get('#drpTransType').click({force:true});
                     cy.get('#drpTransType_popup').find('li').contains(scenario.type).click();
-                    if (scenario.type === Cypress.env('transaction_type').type_prenote) {
+                    if (scenario.type === Cypress.expose('transaction_type').type_prenote) {
                         // For 'prenote', skip the amount field and focus on merchant reference
                         cy.get('#txtMerchantRefNumber').type('123456');
                     } else {
