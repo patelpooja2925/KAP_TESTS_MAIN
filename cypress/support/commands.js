@@ -134,42 +134,32 @@ Cypress.Commands.add('loginB2C_CAS', () => {
 // cypress/support/commands.js
 
 Cypress.Commands.add('loginB2C_CAProd', () => {
-  const base = Cypress.env('baseurl2');
-  const baseOrigin = base.replace(/\/$/, '');
+  return cy.env(['baseurl2', 'credentialsUS'], { log: false })
+    .then(({ baseurl2, credentialsUS }) => {
+      const { login_username, login_password } = credentialsUS;
 
-  const username = Cypress.env('credentialsUS').login_username;
-  const password = Cypress.env('credentialsUS').login_password;
+      cy.visit(new URL('/authentication/login', baseurl2).href);
 
-  cy.visit(base);
+      cy.origin(
+        'https://login.kapcharge.com',
+        { args: { login_username, login_password } },
+        ({ login_username, login_password }) => {
+          cy.get('#email', { timeout: 30000 })
+            .should('be.visible')
+            .type(login_username, { log: false, parseSpecialCharSequences: false });
 
-  cy.get('body').then($b => {
-    if ($b.find('#menu-item-transactions').length) return;
+          cy.get('#password')
+            .should('be.visible')
+            .type(login_password, { log: false, parseSpecialCharSequences: false });
 
-    cy.visit(`${baseOrigin}/authentication/login`);
+          cy.get('#next').click();
+        }
+      );
 
-    cy.origin('https://login.kapcharge.com',
-      { args: { username, password } },
-      ({ username, password }) => {
-        cy.get('#email', { timeout: 30000 })
-          .should('be.visible')
-          .clear()
-          .type(username);
+      cy.pause(); // MFA complete karo, phir Cypress Runner mein Resume dabao.
 
-        cy.get('#password', { timeout: 30000 })
-          .should('be.visible')
-          .clear()
-          .type(password, { log: false });
-
-        cy.get('#next')
-          .should('be.visible')
-          .click();
-
-        
-        cy.pause();
-      }
-    );
-
-    cy.get('#menu-item-transactions', { timeout: 90000 })
-      .should('be.visible');
-  });
+      cy.get('#menu-item-transactions', { timeout: 90000 })
+        .should('be.visible');
+    });
 });
+

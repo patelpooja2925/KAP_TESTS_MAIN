@@ -9,10 +9,10 @@ describe('CA Prod Login', () => {
     
 
     const ExistingtransactionScenarios = [
-        { type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').eft },
-      // { type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').eft },
-        //{ type: Cypress.env('transaction_type').type_collect, method: Cypress.env('transaction_methods').interac },
-        //{ type: Cypress.env('transaction_type').type_pay, method: Cypress.env('transaction_methods').interac }
+        { type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').eft },
+      // { type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').eft },
+        //{ type: Cypress.expose('transaction_type').type_collect, method: Cypress.expose('transaction_methods').interac },
+        //{ type: Cypress.expose('transaction_type').type_pay, method: Cypress.expose('transaction_methods').interac }
     ];
     
     const today = new Date().toLocaleDateString('en-US');
@@ -21,10 +21,10 @@ describe('CA Prod Login', () => {
        ExistingtransactionScenarios.forEach((scenario) => {
                             it(`Search customer transaction For - ${scenario.type} Transaction - ${scenario.method.toUpperCase()}`, () => {
                     cy.loginB2C_CAProd();
-             cy.get('#menu-item-transactions').contains(Cypress.env('menu_items').item_transactions).click();
+             cy.get('#menu-item-transactions').contains(Cypress.expose('menu_items').item_transactions).click();
                 cy.wait(5000)
                     cy.contains('.nav-link .displayText', 'Transactions').click({ force: true });
-                //cy.get('#menu-item-transaction-management').contains(Cypress.env('menu_item_transactions').item_transaction_management).click({force:true});
+                //cy.get('#menu-item-transaction-management').contains(Cypress.expose('menu_item_transactions').item_transaction_management).click({force:true});
                 cy.wait(5000);
                 cy.contains('button', 'New Transaction').click({ force: true });
 
@@ -46,7 +46,7 @@ describe('CA Prod Login', () => {
                             cy.get('#txtMerchantRefNumber').clear().type('TestProdcypressautomation').click({ force: true });
                             cy.get('#txtDescriptions').clear().type('This is a cypress Prod Automation');
                             
-                            if (scenario.type === Cypress.env('transaction_type').type_pay && scenario.method === Cypress.env('transaction_methods').interac) {
+                            if (scenario.type === Cypress.expose('transaction_type').type_pay && scenario.method === Cypress.expose('transaction_methods').interac) {
                                 cy.get('#txtQuestion').type('What is your favorite color?');
                                 cy.get('#txtAnswer').type('Yellow');
                                 cy.wait(2000);

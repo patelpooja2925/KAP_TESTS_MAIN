@@ -8,6 +8,7 @@ module.exports = defineConfig({
     baseUrl: 'https://test.kapcharge.com', // ✅ MUST be baseUrl
     baseUrl1:'https://test-us.kapcharge.com',
     baseurl3: 'https://app-staging.kapcharge.com',
+    baseurl2:'https://app.kapcharge.com',
   
     experimentalSessionAndOrigin: true,
     experimentalModifyObstructiveThirdPartyCode: true,
