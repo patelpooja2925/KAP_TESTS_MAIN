@@ -74,6 +74,29 @@ Cypress.Commands.add('loginB2C_CA', () => {
     .should('be.visible');
 });
    
+Cypress.Commands.add('loginB2C_CAM', () => {
+  cy.env(['credentialsMerchantadmin'], { log: false }).then(({ credentialsMerchantadmin }) => {
+    const { login_username, login_password } = credentialsMerchantadmin;
+
+    cy.visit('/authentication/login');
+
+    cy.origin('https://kapitalincauthdev.b2clogin.com',
+      { args: { login_username, login_password } },
+      ({ login_username, login_password }) => {
+        cy.get('#email', { timeout: 30000 }).should('be.visible').type(login_username, { log: false });
+
+        cy.get('#password').should('be.visible').type(login_password, {log: false, parseSpecialCharSequences: false,
+          });
+
+        cy.get('#next').click();
+      }
+    );
+  });
+
+  cy.get('#menu-item-transactions', { timeout: 60000 })
+    .should('be.visible');
+});
+   
 // ----------------------
 // US Login Command
 // ----------------------
